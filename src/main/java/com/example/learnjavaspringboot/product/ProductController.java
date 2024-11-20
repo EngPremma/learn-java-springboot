@@ -1,12 +1,9 @@
 package com.example.learnjavaspringboot.product;
 
-import com.example.learnjavaspringboot.exceptions.ProductNotFoundException;
-import com.example.learnjavaspringboot.product.model.ErrorResponse;
 import com.example.learnjavaspringboot.product.model.Product;
 import com.example.learnjavaspringboot.product.model.ProductDTO;
 import com.example.learnjavaspringboot.product.model.UpdateProductCommand;
 import com.example.learnjavaspringboot.product.services.*;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,12 +21,15 @@ public class ProductController {
 
     private final GetProductService getProductService;
 
-    public ProductController(CreateProductService createProductService, GetProductsService getProductsService, UpdateProductService updateProductService, DeleteProductService deleteProductService, GetProductService getProductService) {
+    private final SearchProductService searchProductService;
+
+    public ProductController(CreateProductService createProductService, GetProductsService getProductsService, UpdateProductService updateProductService, DeleteProductService deleteProductService, GetProductService getProductService, SearchProductService searchProductService) {
         this.createProductService = createProductService;
         this.getProductsService = getProductsService;
         this.updateProductService = updateProductService;
         this.deleteProductService = deleteProductService;
         this.getProductService = getProductService;
+        this.searchProductService = searchProductService;
     }
 
 
@@ -41,6 +41,11 @@ public class ProductController {
     @GetMapping("/product/{id}")
     public ResponseEntity<ProductDTO> getProductById(@PathVariable Integer id) {
         return getProductService.execute(id);
+    }
+
+    @GetMapping("/product/search")
+    public ResponseEntity<List<ProductDTO>> searchProductByName(@RequestParam String name) {
+        return searchProductService.execute(name);
     }
 
     @PostMapping("/product")
