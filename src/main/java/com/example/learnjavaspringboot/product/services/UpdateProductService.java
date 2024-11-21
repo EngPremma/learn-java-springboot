@@ -6,7 +6,7 @@ import com.example.learnjavaspringboot.product.ProductRepository;
 import com.example.learnjavaspringboot.product.model.Product;
 import com.example.learnjavaspringboot.product.model.ProductDTO;
 import com.example.learnjavaspringboot.product.model.UpdateProductCommand;
-import org.springframework.http.HttpStatus;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +21,10 @@ public class UpdateProductService implements Command<UpdateProductCommand, Produ
     }
 
     @Override
+//    Evict -> throw it away
+//    @CacheEvict(value = "productsCache", key = "#command.getId()") // Update products cache data
+//    Put -> throw it away then puts the return value of the method in the cache
+    @CachePut(value = "productsCache", key = "#command.getId()")
     public ResponseEntity<ProductDTO> execute(UpdateProductCommand command) {
         Optional<Product> optionalProduct = productRepository.findById(command.getId());
 
