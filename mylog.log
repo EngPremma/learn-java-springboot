@@ -637,3 +637,6 @@ Caused by: org.hibernate.HibernateException: Unable to determine Dialect without
 2024-11-21T12:03:29.075+07:00  WARN 23816 --- [learnjavaspringboot] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 2024-11-21T12:03:29.473+07:00  INFO 23816 --- [learnjavaspringboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
 2024-11-21T12:03:29.484+07:00  INFO 23816 --- [learnjavaspringboot] [main] c.e.l.LearnjavaspringbootApplication     : Started LearnjavaspringbootApplication in 5.043 seconds (process running for 5.441)
+2024-11-21T12:13:17.601+07:00  INFO 23816 --- [learnjavaspringboot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-21T12:13:17.604+07:00  INFO 23816 --- [learnjavaspringboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-21T12:13:17.610+07:00  INFO 23816 --- [learnjavaspringboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
