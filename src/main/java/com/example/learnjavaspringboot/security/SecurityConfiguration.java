@@ -38,9 +38,9 @@ public class SecurityConfiguration {
 //                    authorize.requestMatchers(HttpMethod.GET, "/special").hasAuthority("SPECIAL");
 //                    authorize.requestMatchers(HttpMethod.GET, "/basic").hasAnyAuthority("SPECIAL", "BASIC");
 //                    authorize.requestMatchers("/create-new-user").permitAll();
-//                    authorize.requestMatchers("/login").permitAll();
-//                    authorize.anyRequest().authenticated();
-                    authorize.anyRequest().permitAll();
+                    authorize.requestMatchers("/login").permitAll();
+                    authorize.anyRequest().authenticated();
+//                    authorize.anyRequest().permitAll();
                 })
 //                .addFilterBefore(
 //                        new BasicAuthenticationFilter(authenticationManager(httpSecurity)),
